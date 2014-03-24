@@ -6,7 +6,7 @@ express-validation-swagger generates a swagger enabled client using simple conve
 
 ## install
 
-```npm install express-validation-swagger ``
+```npm install express-validation-swagger ```
 
 
 ## install express-validation
@@ -24,8 +24,7 @@ You will need to install the swagger client [swagger-ui](https://www.npmjs.org/p
 ```npm install swagger-ui ```
 
 
-## add swagger your express application
-We will now add swagger to your application
+## add swagger to your express application
 
 1. title is the name given to th swagger web site
 2. statics is the location of the swaggerui client files
@@ -34,6 +33,9 @@ We will now add swagger to your application
 5. validation contains an array of validation blocks
  
 ```
+
+var swagger = require('express-validation-swagger');
+
 swagger(app, {
   title : 'express validation swagger', 
   statics : '/public/docs/swagger_ui/',  
@@ -81,7 +83,6 @@ npm install
 node test/app.js
 ```
 
-   
 
 ```
 var express = require('express')
