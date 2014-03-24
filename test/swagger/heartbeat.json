@@ -1,0 +1,24 @@
+{
+  "apiVersion": "0.0.1",
+  "swaggerVersion": "1.2.5",
+  "basePath": "",
+  "apis": [
+    {
+      "path": "/heartbeat",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "An api for get heartbeat",
+          "nickname": "GetHeartbeat",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {}
+}

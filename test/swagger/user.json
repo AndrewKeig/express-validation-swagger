@@ -1,0 +1,33 @@
+{
+  "apiVersion": "0.0.1",
+  "swaggerVersion": "1.2.5",
+  "basePath": "",
+  "apis": [
+    {
+      "path": "/user",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "An api for get user",
+          "nickname": "GetUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userid",
+              "description": "userid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {}
+}
