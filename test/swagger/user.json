@@ -8,7 +8,107 @@
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "An api for get user",
+          "summary": "An api for GET user",
+          "nickname": "GetUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userid",
+              "description": "userid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/user",
+      "operations": [
+        {
+          "httpMethod": "POST",
+          "summary": "An api for POST user",
+          "nickname": "PostUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userid",
+              "description": "userid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/user",
+      "operations": [
+        {
+          "httpMethod": "DELETE",
+          "summary": "An api for DELETE user",
+          "nickname": "DeleteUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userid",
+              "description": "userid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/user",
+      "operations": [
+        {
+          "httpMethod": "PUT",
+          "summary": "An api for PUT user",
+          "nickname": "PutUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userid",
+              "description": "userid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/user/details",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "An api for GET user",
           "nickname": "GetUser",
           "consumes": [
             "application/json"
