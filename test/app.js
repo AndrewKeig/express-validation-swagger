@@ -17,18 +17,14 @@ var validation = {
     },
     post : { 
       headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
+      , body: { username : Joi.string().required() }
     },
     del : { 
       headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
     },
     put : { 
       headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
-    },
-    details : { 
-      get : { 
-        headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
-      },
-    }, 
+    }
   }
 };
 
@@ -49,12 +45,6 @@ var services = {
     put : function (req, res, next) {
       var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
       res.json(204, user);
-    },
-    details : {
-      get : function (req, res, next) {
-        var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
-        res.json(200, user);
-      }
     }
   }
 }
@@ -63,7 +53,6 @@ app.get('/user', validate(validation.user.get),  services.user.get);
 app.post('/user', validate(validation.user.post),  services.user.post );
 app.del('/user', validate(validation.user.del),   services.user.del);
 app.put('/user', validate(validation.user.put),   services.user.put);
-app.get('/user/details', validate(validation.user.details.get),   services.user.details.get);
 
 swagger(app, {
   title : 'express validation swagger', 
@@ -72,13 +61,11 @@ swagger(app, {
   applicationUrl : 'http://127.0.0.1:3000',
   routes : [
     { page : 'user', method : 'GET',    path: '/user',         validation : validation.user.get },
-    { page : 'user', method : 'POST',   path: '/user',         validation : validation.user.get },
-    { page : 'user', method : 'DELETE', path: '/user',         validation : validation.user.get },
-    { page : 'user', method : 'PUT',    path: '/user',         validation : validation.user.get },
-    { page : 'user', method : 'GET',    path: '/user/details', validation : validation.user.details.get }
+    { page : 'user', method : 'POST',   path: '/user',         validation : validation.user.post },
+    { page : 'user', method : 'DELETE', path: '/user',         validation : validation.user.del },
+    { page : 'user', method : 'PUT',    path: '/user',         validation : validation.user.put }
   ]
 });
-
 
 app.use(app.router);
 http.createServer(app).listen(3000);
