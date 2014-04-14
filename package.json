@@ -1,6 +1,6 @@
 {
   "name": "express-validation-swagger",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "express-validation-swagger generates a swagger enabled client using simple conventions.",
   "homepage": "https://github.com/andrewkeig/express-validation-swagger",
   "author": {

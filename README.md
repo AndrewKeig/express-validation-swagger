@@ -37,6 +37,8 @@ You will need to install the swagger client; which contains the html pages that 
 4. `applicationUrl` is the url of your application, this is inserted into the swagger client (see below)
 5. `routes` contains an array of routes (see below)
  
+#####swagger will be hosted here: http://127.0.0.1:3000/swagger
+
 ```
 var swagger = require('express-validation-swagger');
 
