@@ -54,10 +54,10 @@ app.post('/user', validate(validation.user.post),  services.user.post );
 app.del('/user', validate(validation.user.del),   services.user.del);
 app.put('/user', validate(validation.user.put),   services.user.put);
 
-swagger(app, {
-  title : 'express validation swagger', 
-  statics : '/test/public/swagger/',  
-  resources : '/test/swagger/', 
+app.use('/',swagger({
+  title : 'express validation swagger',
+  statics : '/test/public/swagger/',
+  resources : '/test/swagger/',
   applicationUrl : 'http://127.0.0.1:3000',
   routes : [
     { page : 'user', method : 'GET',    path: '/user',         validation : validation.user.get },
@@ -65,7 +65,7 @@ swagger(app, {
     { page : 'user', method : 'DELETE', path: '/user',         validation : validation.user.del },
     { page : 'user', method : 'PUT',    path: '/user',         validation : validation.user.put }
   ]
-});
+}));
 
 app.use(app.router);
 http.createServer(app).listen(3000);
