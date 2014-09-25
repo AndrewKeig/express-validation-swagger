@@ -8,8 +8,8 @@
       "operations": [
         {
           "httpMethod": "GET",
-          "summary": "An api for GET user",
-          "nickname": "GetUser",
+          "summary": "get a user by user id",
+          "nickname": "User",
           "consumes": [
             "application/json"
           ],
@@ -24,6 +24,20 @@
               "required": true,
               "dataType": "String"
             }
+          ],
+          "responseMessages": [
+            {
+              "code": 500,
+              "message": "Internal server error"
+            },
+            {
+              "code": 400,
+              "message": "Bad request"
+            },
+            {
+              "code": 404,
+              "message": "Not found"
+            }
           ]
         }
       ]
@@ -34,7 +48,7 @@
         {
           "httpMethod": "POST",
           "summary": "An api for POST user",
-          "nickname": "PostUser",
+          "nickname": "User",
           "consumes": [
             "application/json"
           ],
@@ -50,13 +64,14 @@
               "dataType": "String"
             },
             {
-              "name": "UserPost",
+              "name": "body",
               "description": "User",
               "paramType": "body",
               "required": true,
               "dataType": "UserPost"
             }
-          ]
+          ],
+          "responseMessages": []
         }
       ]
     },
@@ -66,7 +81,7 @@
         {
           "httpMethod": "DELETE",
           "summary": "An api for DELETE user",
-          "nickname": "DeleteUser",
+          "nickname": "User",
           "consumes": [
             "application/json"
           ],
@@ -81,7 +96,8 @@
               "required": true,
               "dataType": "String"
             }
-          ]
+          ],
+          "responseMessages": []
         }
       ]
     },
@@ -91,7 +107,7 @@
         {
           "httpMethod": "PUT",
           "summary": "An api for PUT user",
-          "nickname": "PutUser",
+          "nickname": "User",
           "consumes": [
             "application/json"
           ],
@@ -106,7 +122,8 @@
               "required": true,
               "dataType": "String"
             }
-          ]
+          ],
+          "responseMessages": []
         }
       ]
     }

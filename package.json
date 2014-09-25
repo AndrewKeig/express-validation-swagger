@@ -1,7 +1,7 @@
 {
   "name": "express-validation-swagger",
-  "version": "0.1.3",
-  "description": "express-validation-swagger generates a swagger enabled client using simple conventions.",
+  "version": "0.1.5",
+  "description": "express-validation-swagger generates a V1 swagger enabled client using simple conventions.",
   "homepage": "https://github.com/andrewkeig/express-validation-swagger",
   "author": {
     "name": "Andrew Keig",
@@ -12,20 +12,20 @@
     "url": "git://github.com/andrewkeig/express-validation-swagger.git"
   },
   "dependencies": {
-    "express": ">=3.4.0",
-    "json-file-plus": ">=0.2.3",
-    "underscore": ">=1.6.0"
+    "consolidate": "^0.10.0",
+    "express": "^4.9.5",
+    "json-file-plus": "^1.0.7",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
-    "consolidate": "~0.9.1",
-    "handlebars": "~1.0.12",
-    "grunt": "~0.4.1",
-    "request": "~2.27.0",
-    "grunt-cafe-mocha": "~0.1.9",
-    "grunt-contrib-jshint": "~0.6.4",
-    "joi": "~2.7.0",
-    "async": "~0.2.10",
-    "express-validation": "~0.1.6"
+    "body-parser": "^1.9.0",
+    "express-validation": "^0.2.4",
+    "grunt": "^0.4.5",
+    "grunt-cafe-mocha": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "handlebars": "^2.0.0",
+    "joi": "^4.7.0",
+    "request": "^2.44.0"
   },
   "keywords": [
     "swagger",

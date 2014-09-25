@@ -1,6 +1,7 @@
 var express = require('express')
   , cons = require('consolidate')
   , http = require('http')
+  , bodyParser = require('body-parser')
   , swagger = require('../lib/swagger/main')
   , validate = require('express-validation')
   , Joi = require('joi')
@@ -9,6 +10,7 @@ var express = require('express')
 app.engine('html', cons.handlebars);
 app.set('view engine', 'html');
 app.set('views', 'public');
+app.use(bodyParser.json())
 
 var validation = { 
   user : { 
@@ -16,8 +18,8 @@ var validation = {
       headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
     },
     post : { 
-      headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
-      , body: { username : Joi.string().required() }
+      headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }, 
+      body: { username : Joi.string().required() }
     },
     del : { 
       headers: { userid : Joi.string().required().regex(/^[0-9a-fA-F]{24}$/) }
@@ -32,41 +34,56 @@ var services = {
   user : {
     get : function (req, res, next) {
       var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
-      res.json(200, user);
+      res.status(200).json(user)
     },
     post : function (req, res, next) {
       var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
-      res.json(201, user);
+      res.status(200).json(user)
     },
     del : function (req, res, next) {
       var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
-      res.json(204, user);
+      res.status(200).json(user)
     },
     put : function (req, res, next) {
       var user = { "userId" : "530d1d22be018c1121025be1", "name" : "airasoul" };
-      res.json(204, user);
+      res.status(200).json(user)
     }
   }
 }
 
 app.get('/user', validate(validation.user.get),  services.user.get);
 app.post('/user', validate(validation.user.post),  services.user.post );
-app.del('/user', validate(validation.user.del),   services.user.del);
+app.delete('/user', validate(validation.user.del),   services.user.del);
 app.put('/user', validate(validation.user.put),   services.user.put);
 
 swagger(app, {
-  title : 'express validation swagger', 
+  title : 'swagger api', 
   statics : '/test/public/swagger/',  
   resources : '/test/swagger/', 
   applicationUrl : 'http://127.0.0.1:3000',
+  version : '0.1.5',
   routes : [
-    { page : 'user', method : 'GET',    path: '/user',         validation : validation.user.get },
-    { page : 'user', method : 'POST',   path: '/user',         validation : validation.user.post },
-    { page : 'user', method : 'DELETE', path: '/user',         validation : validation.user.del },
-    { page : 'user', method : 'PUT',    path: '/user',         validation : validation.user.put }
+    { 
+      route : 'user', 
+      method : 'GET', 
+      path: '/user', 
+      validation : validation.user.get, 
+      options : {
+        responseMessages : [
+          {code: 500, message: "Internal server error"},
+          {code: 400, message: "Bad request" },
+          {code: 404, message: "Not found" }
+        ],
+        description : 'get a user by user id', 
+        consumes : ["application/json"],
+        produces : ["application/json"]  
+      }
+    },
+    { route : 'user', method : 'POST',   path: '/user', validation : validation.user.post },
+    { route : 'user', method : 'DELETE', path: '/user', validation : validation.user.del },
+    { route : 'user', method : 'PUT',    path: '/user', validation : validation.user.put }
   ]
 });
 
-app.use(app.router);
 http.createServer(app).listen(3000);
 module.exports = app;
